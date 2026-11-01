@@ -10,7 +10,7 @@ jobs:
       - run: |
           unzip -q NEXA-github (1).zip
           cp -a Pomni-AI-main/. .
-          rm -rf Pomni-AI-main NEXA-github.zip .env
+          rm -rf Pomni-AI-main NEXA-github (1).zip .env
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add -A
