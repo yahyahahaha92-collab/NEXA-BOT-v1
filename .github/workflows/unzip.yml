@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          unzip -q NEXA-github.zip
+          unzip -q NEXA-github (1).zip
           cp -a Pomni-AI-main/. .
           rm -rf Pomni-AI-main NEXA-github.zip .env
           git config user.name "github-actions"
