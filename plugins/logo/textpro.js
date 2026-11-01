@@ -141,4 +141,5 @@ handler.command = logos;
 handler.category = "logos";
 handler.usage = logos;
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'textpro');

@@ -65,4 +65,5 @@ control.command = ['ضيف', 'طرد', 'رفع', 'خفض'];
 control.admin = true;
 control.botAdmin = true;
 control.category = "admin";
-export default control;
+import { safe } from '../../system/safe.js';
+export default safe(control, 'control');

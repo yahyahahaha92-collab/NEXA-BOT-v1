@@ -119,4 +119,5 @@ handler.usage = ["تعديل"];
 handler.command = ["editimage", "تعديل"];
 handler.category = "tools";
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'editImage');

@@ -37,4 +37,5 @@ handler.usage = ["طلاق"];
 handler.category = "group";
 handler.command = ["طلاق"];
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'divorce');

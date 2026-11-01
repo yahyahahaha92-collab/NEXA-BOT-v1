@@ -17,4 +17,5 @@ handler.usage =  ["الألقاب"];
 handler.category = "nicknames";
 handler.admin = true;
 handler.group = true;
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'nicknames');

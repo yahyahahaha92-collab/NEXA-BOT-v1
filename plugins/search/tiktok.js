@@ -23,7 +23,7 @@ if (data && data.length > 0) {
         mentions: [m.sender],
         newsletter: {
             name: '𝙉𝙀𝙓𝘼 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️',
-            jid: '120363225356834044@newsletter'
+            jid: '120363428637387322@newsletter'
         },
     }, global.reply_status)
 } else {
@@ -39,4 +39,5 @@ if (data && data.length > 0) {
 test.category = "search";
 test.usage = ["بحث_تيك"];
 test.command = ["بحث_تيك"];
-export default test;
+import { safe } from '../../system/safe.js';
+export default safe(test, 'tiktok');

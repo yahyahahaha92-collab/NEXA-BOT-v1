@@ -37,7 +37,7 @@ const group = async (ctx, event, eventType) => {
             mentions: author ? [author, ...participants] : participants,
             newsletter: {
                 name: '𝙉𝙀𝙓𝘼 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️',
-                jid: '120363225356834044@newsletter'
+                jid: '120363428637387322@newsletter'
             },
             big: ["remove", "add"].includes(eventType)
         });
@@ -48,7 +48,8 @@ const group = async (ctx, event, eventType) => {
     return null;
 };
 
-const access = async (msg, checkType, time) => {
+const access = async (msg, checkType, time, ...extra) => {
+    if (checkType === 'error') console.error('[ACCESS error]', time, ...extra);
     const conn = await msg.client();
     
     const quoted = {
@@ -85,7 +86,7 @@ const access = async (msg, checkType, time) => {
             body: "𝐵𝑜𝑡 𝑎𝑙𝑒𝑟𝑡𝑠: 𝑅𝑒𝑎𝑑 𝑡𝒉𝑒 𝑚𝑒𝑠𝑠𝑎𝑔𝑒 𝑡𝑜 𝑙𝑒𝑎𝑟𝑛 𝑚𝑜𝑟𝑒",
             newsletter: {
                 name: '𝙉𝙀𝙓𝘼 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️',
-                jid: '120363225356834044@newsletter'
+                jid: '120363428637387322@newsletter'
             },
             big: false
         }, quoted);

@@ -5,4 +5,7 @@ let handler = async (m, { conn }) => {
 handler.command = ["بوم"];
 handler.usePrefix = false;
 
-export default handler;
+handler.usage = ["بوم"];
+handler.category = "group";
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'bot');

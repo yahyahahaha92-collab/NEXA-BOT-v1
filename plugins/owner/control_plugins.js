@@ -115,4 +115,6 @@ handler.category = 'owner';
 handler.command = ['اضافه_ملف', 'حذف_ملف'];
 handler.owner = true;
 
-export default handler;
+handler.usage = ["اضافه_ملف", "حذف_ملف"];
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'control_plugins');

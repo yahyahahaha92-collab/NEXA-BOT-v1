@@ -30,4 +30,5 @@ run.command = ["اذاعه"];
 run.usage = ["اذاعه"];
 run.category = "owner";
 run.owner = true;
-export default run;
+import { safe } from '../../system/safe.js';
+export default safe(run, 'az3a');

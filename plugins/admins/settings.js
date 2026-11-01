@@ -57,7 +57,7 @@ async function handler(m, { conn, command, args }) {
           mentions: [m.sender],
   newsletter: {
       name: '𝙉𝙀𝙓𝘼 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️',
-      jid: '120363225356834044@newsletter'
+      jid: '120363428637387322@newsletter'
     },
   interactiveConfig: {
     buttons_limits: 1, // لازم تبقي واحد
@@ -189,4 +189,5 @@ handler.usage = ['تفعيل'];
 handler.category = 'admin';
 handler.command = ['تفعيل'];
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'settings');

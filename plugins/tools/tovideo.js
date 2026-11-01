@@ -22,4 +22,5 @@ handler.usage = ["لفيديو"];
 handler.category = "tools";
 handler.command = /^(tovideo|tovid|tomp4|لفيديو)$/i
 
-export default handler
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'tovideo');

@@ -73,4 +73,5 @@ handler.usage    = ['كود'];
 handler.command  = ['كود', 'getcode', 'cat'];
 handler.owner    = true;
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'Viewcode');

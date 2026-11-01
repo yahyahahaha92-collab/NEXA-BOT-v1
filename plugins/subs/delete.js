@@ -34,4 +34,5 @@ run.category = "sub";
 run.noSub = true;
 run.owner = true;
 
-export default run;
+import { safe } from '../../system/safe.js';
+export default safe(run, 'delete');

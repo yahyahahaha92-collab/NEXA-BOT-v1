@@ -78,7 +78,8 @@ run.command = ["تنصيب"];
 run.noSub = true;
 run.usage =  ["تنصيب"];
 run.category = "sub";
-export default run;
+import { safe } from '../../system/safe.js';
+export default safe(run, 'sub');
 
 
 
@@ -92,7 +93,7 @@ const Func = {
 🔑 — الكود: ${code}
 ⊱⋅ ──────────── ⋅⊰
 > *_افتح واتساب > الأجهزة المرتبطة > ربط جهاز برقم الهاتف > أدخل الكود_*`,
-      footerText: "@𝑺𝒚𝒔𝒕𝒆𝒎_𝑺𝒖𝒃𝑩𝒐𝒕𝒔_𝑽𝑰𝑰",
+      footerText: "@𝑺𝒚𝒔𝒕𝒆𝒎_𝑺𝒖𝒃𝑩𝒐𝒕𝒔_𝑵𝑬𝑿𝑨",
       buttons: [
         { name: "cta_copy", params: { display_text: "⟨🎪| 𝐂𝐨𝐩𝐲 𝐂𝐨𝐝𝐞 |🎪⟩", copy_code: code } },
         { name: "cta_url", params: { display_text: "⟨🫒| 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 𝐕𝐀 |🫒⟩", url: "https://google.com" } },
@@ -100,11 +101,11 @@ const Func = {
       mentions: [m.sender],
       newsletter: {
         name: '𝙉𝙀𝙓𝘼 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️',
-        jid: '120363225356834044@newsletter'
+        jid: '120363428637387322@newsletter'
       },
       interactiveConfig: {
         buttons_limits: 10,
-        list_title: "@𝑺𝒚𝒔𝒕𝒆𝒎_𝑺𝒖𝒃𝑩𝒐𝒕𝒔_𝑽𝑰𝑰",
+        list_title: "@𝑺𝒚𝒔𝒕𝒆𝒎_𝑺𝒖𝒃𝑩𝒐𝒕𝒔_𝑵𝑬𝑿𝑨",
         button_title: "Click Here",
         canonical_url: `https://code.com/${code}`
       }
@@ -117,10 +118,10 @@ const Func = {
       text: `✅ — *تـم الاتـصـال بـنـجـاح*\n\n📱 الرقم: ${num}\n> *البوت جاهز للاستخدام الآن*`,
       contextInfo: {
         externalAdReply: {
-          title: "𝐏𝐎𝐌𝐍𝐈-𝐀𝐈 🎪 | 𝐁𝐨𝐭 𝐢𝐬 𝐛𝐮𝐢𝐥𝐭 𝐨𝐧 𝐭𝐡𝐞 𝐖𝐒/𝐕𝐈𝐈 𝐟𝐫𝐚𝐦𝐞𝐰𝐨𝐫𝐤",
-          body: "𝚆𝚑𝚊𝚝𝚜𝙰𝚙𝚙 𝚋𝚘𝚝 𝚝𝚑𝚊𝚝 𝚒𝚜 𝚎𝚊𝚜𝚢 𝚝𝚘 𝚖𝚘𝚍𝚒𝚏𝚢 𝚊𝚗𝚍 𝚟𝚎𝚛𝚢 𝚏𝚊𝚜𝚝",
+          title: "𝐍𝐄𝐗𝐀 🎪 | 𝐖𝐡𝐚𝐭𝐬𝐀𝐩𝐩 𝐁𝐨𝐭",
+          body: "𝚆𝚑𝚊𝚝𝚜𝙰𝚙𝚙 𝚋𝚘𝚝 𝚋𝚢 ꧁リヴァイ꧂",
           thumbnailUrl: img,
-          sourceUrl: '',
+          sourceUrl: 'https://whatsapp.com/channel/0029VbDnEPG1iUxfnegKky46',
           mediaType: 1,
           renderLargerThumbnail: true
         }

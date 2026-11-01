@@ -22,4 +22,5 @@ handler.usage = ["كلمات"];
 handler.command = ["كلمات", "lyrics"];
 handler.category = "tools";
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'lyrics');

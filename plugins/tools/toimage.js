@@ -17,4 +17,5 @@ const toimg = async (m, { conn }) => {
 toimg.usage = ["لصوره"];
 toimg.category = "tools";
 toimg.command = ["لصوره", "toimage", "toimg"];
-export default toimg;
+import { safe } from '../../system/safe.js';
+export default safe(toimg, 'toimage');

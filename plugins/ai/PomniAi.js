@@ -29,14 +29,15 @@ handler.usage = ["بومني"];
 handler.category = "ai";
 handler.command = ["بومني", "pomni"];
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'PomniAi');
 
 const context = (jid, img) => ({
     mentionedJid: [jid],
     isForwarded: true,
     forwardingScore: 1,
     forwardedNewsletterMessageInfo: {
-        newsletterJid: '120363225356834044@newsletter',
+        newsletterJid: '120363428637387322@newsletter',
         newsletterName: '𝐏𝐎𝐌𝐍𝐈 ~ 𝐂𝐢𝐫𝐜𝐮𝐬 🎪',
         serverMessageId: 0
     },
@@ -44,7 +45,7 @@ const context = (jid, img) => ({
         title: "𝐓𝐇𝐄 𝐀𝐌𝐀𝐙𝐈𝐍𝐆 𝐃𝐈𝐆𝐈𝐓𝐀𝐋 𝐂𝐈𝐑𝐂𝐔𝐒 🎭",
         body: "𝚃𝚊𝚔𝚎 𝚊 𝚍𝚎𝚎𝚙 𝚋𝚛𝚎𝚊𝚝𝚑 ~ ☆ 𝙻𝚎𝚝'𝚜 𝚝𝚑𝚒𝚗𝚔 𝚝𝚘𝚐𝚎𝚝𝚑𝚎𝚛",
         thumbnailUrl: img,
-        sourceUrl: '',
+        sourceUrl: 'https://whatsapp.com/channel/0029VbDnEPG1iUxfnegKky46',
         mediaType: 1,
         renderLargerThumbnail: true
     }

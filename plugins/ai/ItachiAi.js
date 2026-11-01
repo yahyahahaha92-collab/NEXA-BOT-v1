@@ -29,14 +29,15 @@ handler.usage = ["إيتاتشي"];
 handler.category = "ai";
 handler.command = ["إيتاتشي", "itachi"];
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'ItachiAi');
 
 const context = (jid, img) => ({
     mentionedJid: [jid],
     isForwarded: true,
     forwardingScore: 1,
     forwardedNewsletterMessageInfo: {
-        newsletterJid: '120363225356834044@newsletter',
+        newsletterJid: '120363428637387322@newsletter',
         newsletterName: '𝐈𝐓𝐀𝐂𝐇𝐈 ~ 𝐀𝐤𝐚𝐭𝐬𝐮𝐤𝐢 🍂',
         serverMessageId: 0
     },
@@ -44,7 +45,7 @@ const context = (jid, img) => ({
         title: "𝐍𝐀𝐑𝐔𝐓𝐎 🍥 | 𝐀𝐤𝐚𝐭𝐬𝐮𝐤𝐢 𝐋𝐞𝐠𝐞𝐧𝐝",
         body: "𝙷𝚖... 𝚒𝚗𝚝𝚎𝚛𝚎𝚜𝚝𝚒𝚗𝚐 ~ ☆ 𝙸'𝚖 𝚗𝚘𝚝 𝚒𝚗𝚝𝚎𝚛𝚎𝚜𝚝𝚎𝚍",
         thumbnailUrl: img,
-        sourceUrl: '',
+        sourceUrl: 'https://whatsapp.com/channel/0029VbDnEPG1iUxfnegKky46',
         mediaType: 1,
         renderLargerThumbnail: true
     }

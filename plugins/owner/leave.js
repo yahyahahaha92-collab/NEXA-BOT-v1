@@ -7,4 +7,5 @@ handler.usage = ["اخرج"];
 handler.category = "group";
 handler.command = ["اخرج"];
 handler.owner = true 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'leave');

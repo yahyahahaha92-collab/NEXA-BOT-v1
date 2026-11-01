@@ -17,4 +17,5 @@ await conn.sendMessage(
 test.usage = ["ملصق"];
 test.command = ["ملصق", "s"];
 test.category = "sticker";
-export default test;
+import { safe } from '../../system/safe.js';
+export default safe(test, 's');

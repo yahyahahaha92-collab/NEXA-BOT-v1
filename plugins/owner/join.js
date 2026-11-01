@@ -18,4 +18,5 @@ handler.usage = ["انضم"];
 handler.category = "group";
 handler.command = ["انضم", "ادخل"];
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'join');

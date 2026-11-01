@@ -78,4 +78,7 @@ handler.before = async (m, { conn, bot }) => {
 handler.command = ["كتم", "فك_كتم"];
 handler.admin = true;
 
-export default handler;
+handler.usage = ["كتم", "فك_كتم"];
+handler.category = "admin";
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'mute');

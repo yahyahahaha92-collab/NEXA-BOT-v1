@@ -1,4 +1,7 @@
+import { isAllowed } from '../../system/maingroup.js';
 export default async function before(m, { conn , bot }) {
+  if (m.fromMe) return false;
+  if (!(await isAllowed(m, conn))) return false;
   const triggers = {
     "السلام عليكم": ["*وعليكم السلام منور يغالي 🤎*", "*وعليكم السلام ورحمة الله وبركاته ❤️*"],
     "تست": ["تست", "تست تست"],

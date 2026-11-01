@@ -29,4 +29,5 @@ let handler = async (m, { conn }) => {
 handler.usage = ["حضن @منشن"];
 handler.category = "gif";
 handler.command = ["حضن"];
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'hug');

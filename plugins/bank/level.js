@@ -74,15 +74,15 @@ export default async function before(m, { conn }) {
                 isForwarded: true,
                 forwardingScore: 1,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363225356834044@newsletter',
+                    newsletterJid: '120363428637387322@newsletter',
                     newsletterName: '𝙉𝙀𝙓𝘼 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️',
                     serverMessageId: 0
                 },
                 externalAdReply: {
-                    title: "𝐏𝐎𝐌𝐍𝐈-𝐀𝐈 🎪 | السيرك الرقمي",
+                    title: "𝐍𝐄𝐗𝐀 🎪 | ꧁リヴァイ꧂",
                     body: "تـرقـيـة فـي الـسـيـرك",
                     thumbnailUrl: global.IMG.profile,
-                    sourceUrl: '',
+                    sourceUrl: 'https://whatsapp.com/channel/0029VbDnEPG1iUxfnegKky46',
                     mediaType: 1,
                     renderLargerThumbnail: true
                 }

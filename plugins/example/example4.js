@@ -55,7 +55,7 @@ await conn.sendCarousel(m.chat, {
   mentions: [m.sender],
   newsletter: {
       name: '𝙉𝙀𝙓𝘼 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️',
-      jid: '120363225356834044@newsletter'
+      jid: '120363428637387322@newsletter'
     },
 }, m)
 
@@ -63,4 +63,5 @@ await conn.sendCarousel(m.chat, {
 example.usage = ["تست4"]
 example.category = "example";
 example.command = ["تست4"]
-export default example;
+import { safe } from '../../system/safe.js';
+export default safe(example, 'example4');

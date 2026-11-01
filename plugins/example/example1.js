@@ -14,7 +14,7 @@ conn.msgUrl(m.chat,
     mentions: ['201234567890@s.whatsapp.net', '201111111111@s.whatsapp.net'],
     newsletter: {
       name: '𝙉𝙀𝙓𝘼 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️',
-      jid: '120363225356834044@newsletter'
+      jid: '120363428637387322@newsletter'
     }
   },
   m
@@ -43,4 +43,5 @@ example.cooldown = 1000; // تقدر تزود الثواني
 /* ↓ استخدام الأمر ب بدايه أو لا ↓ */
 example.usePrefix = false; // لو عملتها true الأمر هيبقي من غير بدايه 
 
-export default example;
+import { safe } from '../../system/safe.js';
+export default safe(example, 'example1');

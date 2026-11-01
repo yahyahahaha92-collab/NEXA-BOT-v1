@@ -44,4 +44,5 @@ h.group = true;
 h.admin = true;
 h.usePrefix = false
 
-export default h;
+import { safe } from '../../system/safe.js';
+export default safe(h, 'h');

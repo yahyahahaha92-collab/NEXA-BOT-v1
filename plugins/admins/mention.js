@@ -39,4 +39,5 @@ handler.category = "admin";
 handler.command = ["منشن", "منشنز", "mention"];
 handler.admin = true;
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'mention');

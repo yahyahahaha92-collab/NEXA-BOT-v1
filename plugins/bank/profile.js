@@ -64,4 +64,5 @@ handler.usage = ["بروفايل"];
 handler.category = "bank";
 handler.command = ["بروفايل", "profile", "my"];
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'profile');

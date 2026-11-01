@@ -10,4 +10,5 @@ handler.usage = ["بوت"];
 handler.category = "ai";
 handler.command = ["بوت"];
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'chat');

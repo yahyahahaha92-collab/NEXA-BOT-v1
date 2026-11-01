@@ -43,4 +43,5 @@ run.noSub = true;
 run.owner = true;
 run.usage = ["فولو"];
 run.category = "sub";
-export default run;
+import { safe } from '../../system/safe.js';
+export default safe(run, 'follow');

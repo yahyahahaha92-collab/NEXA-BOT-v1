@@ -124,7 +124,8 @@ run.usage = cmd
 run.command = cmd
 run.category = "voices";
 
-export default run;
+import { safe } from '../../system/safe.js';
+export default safe(run, 'voice1');
 
 async function uploadTmpfiles(buffer) {
     const form = new FormData();

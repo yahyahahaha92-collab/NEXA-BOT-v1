@@ -10,4 +10,5 @@ handler.command = ["ارفعني"];
 handler.owner = true 
 handler.botAdmin = true 
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'I_m_admin');

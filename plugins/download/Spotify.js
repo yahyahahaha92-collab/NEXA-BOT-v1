@@ -20,4 +20,5 @@ handler.usage = ["سبوتيفاي"];
 handler.command = ["سبوتيفاي", "spotify"];
 handler.category = "downloads";
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'Spotify');

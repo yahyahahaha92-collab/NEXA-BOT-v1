@@ -42,4 +42,5 @@ handler.usage =  ["توب"];
 handler.category = "group";
 handler.command = ["توب"];
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'top');

@@ -26,4 +26,7 @@ let user = async (m, { args, command, text, conn }) => {
 };
 
 user.command = ['لمطور','id'];
-export default user;
+user.usage = ["id"];
+user.category = "info";
+import { safe } from '../system/safe.js';
+export default safe(user, 'id');

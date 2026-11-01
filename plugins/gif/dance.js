@@ -30,4 +30,5 @@ handler.usage = ["ارقص @منشن"];
 handler.category = "gif";
 handler.command = ["ارقص"];
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'dance');

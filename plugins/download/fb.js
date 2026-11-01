@@ -1,15 +1,19 @@
 import axios from 'axios';
 import qs from 'qs';
 import cheerio from 'cheerio';
+import { extractUrl } from '../../system/dl.js';
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) throw `*❲ ❤️ ❳ ~ ضع رابط الفيديو بعد الأمر ~ ❲ 💙 ❳ *\n\nمثال:\n/${command} https://www.facebook.com/reel/xxxxxx`;
 
+  const link = extractUrl(text) || extractUrl(m.quoted?.text || '');
+  if (!link || !/facebook\.com|fb\.watch|fb\.com/i.test(link)) throw '❌ حط رابط فيسبوك صحيح';
+
   m.react('🌾');
 
   try {
-    const tokenRes = await userVerify(text);
-    const htmlRes = await ajaxSearch(text, tokenRes.k_token, tokenRes.k_exp, tokenRes.token);
+    const tokenRes = await userVerify(link);
+    const htmlRes = await ajaxSearch(link, tokenRes.k_token, tokenRes.k_exp, tokenRes.token);
     const $ = cheerio.load(htmlRes.data);
 
     const title = $('.detail h3').text().trim() || 'Facebook Video';
@@ -33,8 +37,9 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     }, { quoted: m });
 
   } catch (e) {
-    console.log(e.message);
+    console.error('[FB]', e?.message || e);
     m.react('❌');
+    return m.reply(typeof e === 'string' ? e : '❌ ما قدرت أحمّل الفيديو.\nتأكد أن الفيديو عام وأن الرابط صحيح، أو جرب بعد شويه');
   }
 };
 
@@ -42,7 +47,8 @@ handler.usage = ["فيس"]
 handler.category = "downloads";
 handler.command = /^(فيس|فيسبوك|fb|fbdl|facebook)$/i;
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'fb');
 
 async function userVerify(url) {
   const data = qs.stringify({ url });

@@ -29,14 +29,15 @@ handler.usage = ["لوفي"];
 handler.category = "ai";
 handler.command = ["لوفي", "luffy"];
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'LuffyAi');
 
 const context = (jid, img) => ({
     mentionedJid: [jid],
     isForwarded: true,
     forwardingScore: 1,
     forwardedNewsletterMessageInfo: {
-        newsletterJid: '120363225356834044@newsletter',
+        newsletterJid: '120363428637387322@newsletter',
         newsletterName: '𝐋𝐔𝐅𝐅𝐘 ~ 𝐊𝐢𝐧𝐠 👑',
         serverMessageId: 0
     },
@@ -44,7 +45,7 @@ const context = (jid, img) => ({
         title: "𝐎𝐍𝐄 𝐏𝐈𝐄𝐂𝐄 🏴‍☠️ | 𝐊𝐢𝐧𝐠 𝐨𝐟 𝐭𝐡𝐞 𝐏𝐢𝐫𝐚𝐭𝐞𝐬",
         body: "𝙼𝚎𝚊𝚝 ~ ☆ 𝙰𝚍𝚟𝚎𝚗𝚝𝚞𝚛𝚎 (⁠｡⁠✧⁠ω⁠✧⁠｡⁠)",
         thumbnailUrl: img,
-        sourceUrl: '',
+        sourceUrl: 'https://whatsapp.com/channel/0029VbDnEPG1iUxfnegKky46',
         mediaType: 1,
         renderLargerThumbnail: true
     }

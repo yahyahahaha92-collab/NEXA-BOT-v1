@@ -22,4 +22,5 @@ handler.category = "owner";
 handler.command = ["ضيف_مطور", "اضافه_مطور"];
 handler.owner = true;
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'add_owner');

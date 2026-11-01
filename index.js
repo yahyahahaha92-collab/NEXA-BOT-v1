@@ -1,3 +1,4 @@
+import './system/globals.js';
 import { Client } from 'meowsab';
 import { group, access } from "./system/control.js";
 import UltraDB from "./system/UltraDB.js";
@@ -13,10 +14,14 @@ global.IMG = {
 const client = new Client({
   phoneNumber: '212619876959', // Bot number
   prefix: [".", "/", "!"],
-  fromMe: false, 
+  fromMe: true, // the bot also answers commands typed from the bot's own WhatsApp account
   owners: [
     // Owner
-    { name: "꧁リヴァイ꧂", jid: "212620847586@s.whatsapp.net" }
+    { name: "꧁リヴァイ꧂", lid: "212620847586@lid", jid: "212620847586@s.whatsapp.net" },
+    // Owner 2
+    { name: "Yorix147", lid: "212777538541@lid", jid: "212777538541@s.whatsapp.net" },
+    // the bot account itself
+    { name: "NEXA", lid: "212619876959@lid", jid: "212619876959@s.whatsapp.net" }
   ],
   settings: { noWelcome: false },
   commandsPath: './plugins'
@@ -35,7 +40,7 @@ const { config } = client;
 config.info = { 
   nameBot: "♡ 𝙉𝙀𝙓𝘼 🎪 〈", 
   nameChannel: "𝙉𝙀𝙓𝘼 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️", 
-  idChannel: "120363225356834044@newsletter",
+  idChannel: "120363428637387322@newsletter",
   urls: {
     repo: "https://github.com/yahyahahaha92-collab/NEXA-BOT-v1",
     api: "https://emam-api.web.id",

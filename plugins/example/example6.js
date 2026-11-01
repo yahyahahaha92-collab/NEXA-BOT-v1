@@ -32,4 +32,5 @@ return conn.sendAiMessage(m.chat, [
 example.usage = ["تست6"]
 example.category = "example";
 example.command = ["تست6"]
-export default example;
+import { safe } from '../../system/safe.js';
+export default safe(example, 'example6');

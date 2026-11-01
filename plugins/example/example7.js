@@ -10,4 +10,5 @@ conn.circular(m.chat, {
 example.usage = ["تست7"]
 example.category = "example";
 example.command = ["تست7"]
-export default example;
+import { safe } from '../../system/safe.js';
+export default safe(example, 'example7');

@@ -15,7 +15,7 @@ const { data } = JSON.parse(res);
   mentions: [m.sender],
   newsletter: {
       name: '𝙉𝙀𝙓𝘼 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️',
-      jid: '120363225356834044@newsletter'
+      jid: '120363428637387322@newsletter'
     },
 }, global.reply_status)
 
@@ -33,7 +33,7 @@ return await conn.sendButtonNormal(m.chat, {
   mentions: [m.sender],
   newsletter: {
       name: '𝙉𝙀𝙓𝘼 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️',
-      jid: '120363225356834044@newsletter'
+      jid: '120363428637387322@newsletter'
     },
 }, global.reply_status)
 
@@ -42,4 +42,5 @@ handler.usage =  ["تطقيم"];
 handler.category = "group";
 handler.command = ["ماتشينج", "تطقيم"];
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'matching');

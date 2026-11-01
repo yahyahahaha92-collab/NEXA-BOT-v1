@@ -5,17 +5,17 @@ let handler = async (m, { conn, bot }) => {
     key: { fromMe: false, participant: '0@s.whatsapp.net', remoteJid: 'status@broadcast' },
     message: { conversation: 'NEXA ❤️💙' }
   };
-  const num = bot.config.owners[0].jid.split("@")[0];
-  let vcard = `BEGIN:VCARD
-VERSION:3.0
-FN:${watermark}
-TEL;type=CELL;waid=${num}:+${num}
-END:VCARD`;
+  const owners = bot.config.owners || [];
+  const contacts = owners.map((o) => {
+    const num = o.jid.split("@")[0];
+    const name = o.name || watermark;
+    return { vcard: `BEGIN:VCARD\nVERSION:3.0\nFN:${name}\nTEL;type=CELL;waid=${num}:+${num}\nEND:VCARD` };
+  });
 
   let img = global.IMG.profile;
   
   await conn.sendMessage(m.chat, {
-    contacts: { displayName: watermark, contacts: [{ vcard }] },
+    contacts: { displayName: 'NEXA ~ المطورين', contacts },
     contextInfo: {
       forwardingScore: 2023,
       externalAdReply: {
@@ -33,4 +33,7 @@ END:VCARD`;
 
 handler.command = /^(owner|مطور|المطور)$/i;
 
-export default handler;
+handler.usage = ["المطور"];
+handler.category = "owner";
+import { safe } from '../system/safe.js';
+export default safe(handler, 'owner');

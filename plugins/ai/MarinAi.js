@@ -29,7 +29,8 @@ handler.category = "ai";
 handler.command = ["مارين"];
 
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'MarinAi');
 
 
 const context = (jid, img) => ({
@@ -37,7 +38,7 @@ const context = (jid, img) => ({
     isForwarded: true,
     forwardingScore: 1,
     forwardedNewsletterMessageInfo: {
-        newsletterJid: '120363225356834044@newsletter',
+        newsletterJid: '120363428637387322@newsletter',
         newsletterName: '𝐌𝐀𝐑𝐈𝐍 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🎀',
         serverMessageId: 0
     },
@@ -45,7 +46,7 @@ const context = (jid, img) => ({
         title: "𝐌𝐀𝐑𝐈𝐍 𝐊𝐈𝐓𝐀𝐆𝐀𝐖𝐀 💛 | 𝐂𝐨𝐬𝐩𝐥𝐚𝐲𝐞𝐫 𝐆𝐢𝐫𝐥",
         body: "𝚆𝚎𝚕𝚌𝚘𝚖𝚎 𝚝𝚘 𝚖𝚢 𝚠𝚘𝚛𝚕𝚍 ~ ☆ 𝙻𝚎𝚝'𝚜 𝚑𝚊𝚟𝚎 𝚏𝚞𝚗 𝚝𝚘𝚐𝚎𝚝𝚑𝚎𝚛 (⁠◕⁠ᴗ⁠◕⁠✿⁠)",
         thumbnailUrl: img,
-        sourceUrl: '',
+        sourceUrl: 'https://whatsapp.com/channel/0029VbDnEPG1iUxfnegKky46',
         mediaType: 1,
         renderLargerThumbnail: true
     }

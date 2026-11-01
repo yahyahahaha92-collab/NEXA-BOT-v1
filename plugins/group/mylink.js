@@ -5,4 +5,5 @@ handler.usage = ["رابطي"];
 handler.category = "group";
 handler.command = ["رابطي"];
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'mylink');

@@ -39,4 +39,5 @@ handler.usage = ["بيحبني", "بيكرهني", "بيكراش"];
 handler.category = "group";
 handler.command = ["بيحبني", "بيكرهني", "بيكراش"];
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'guesses');

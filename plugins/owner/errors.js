@@ -10,4 +10,5 @@ run.command = ["الايرورات"]
 run.usage = ["الايرورات"];
 run.category = "owner";
 run.owner = true;
-export default run
+import { safe } from '../../system/safe.js';
+export default safe(run, 'errors');

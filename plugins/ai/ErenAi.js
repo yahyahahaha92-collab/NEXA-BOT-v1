@@ -29,14 +29,15 @@ handler.usage = ["إيرن"];
 handler.category = "ai";
 handler.command = ["إيرن", "eren"];
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'ErenAi');
 
 const context = (jid, img) => ({
     mentionedJid: [jid],
     isForwarded: true,
     forwardingScore: 1,
     forwardedNewsletterMessageInfo: {
-        newsletterJid: '120363225356834044@newsletter',
+        newsletterJid: '120363428637387322@newsletter',
         newsletterName: '𝐄𝐑𝐄𝐍 ~ 𝐓𝐢𝐭𝐚𝐧 🦾',
         serverMessageId: 0
     },
@@ -44,7 +45,7 @@ const context = (jid, img) => ({
         title: "𝐀𝐓𝐓𝐀𝐂𝐊 𝐎𝐍 𝐓𝐈𝐓𝐀𝐍 💢 | 𝐑𝐮𝐦𝐛𝐥𝐢𝐧𝐠",
         body: "𝙵𝚁𝙴𝙴𝙳𝙾𝙼 ~ ☆ 𝙸'𝚕𝚕 𝚔𝚎𝚎𝚙 𝚖𝚘𝚟𝚒𝚗𝚐 𝚏𝚘𝚛𝚠𝚊𝚛𝚍",
         thumbnailUrl: img,
-        sourceUrl: '',
+        sourceUrl: 'https://whatsapp.com/channel/0029VbDnEPG1iUxfnegKky46',
         mediaType: 1,
         renderLargerThumbnail: true
     }

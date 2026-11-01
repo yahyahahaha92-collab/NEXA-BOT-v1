@@ -40,7 +40,7 @@ await conn.sendButton(m.chat, {
   mentions: [m.sender],
   newsletter: {
       name: '𝙉𝙀𝙓𝘼 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️',
-      jid: '120363225356834044@newsletter'
+      jid: '120363428637387322@newsletter'
     },
   interactiveConfig: {
     buttons_limits: 10,
@@ -55,4 +55,5 @@ await conn.sendButton(m.chat, {
 example.usage = ["تست2"]
 example.category = "example";
 example.command = ["تست2"]
-export default example;
+import { safe } from '../../system/safe.js';
+export default safe(example, 'example2');

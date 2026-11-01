@@ -94,4 +94,5 @@ handler.usage = ["سرقة"];
 handler.category = "games";
 handler.command = ["سرقة", "steal"];
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'theft');

@@ -28,4 +28,5 @@ run.command = ["احصائيات_البوتات"];
 run.noSub = true;
 run.usage =  ["احصائيات_البوتات"];
 run.category = "sub";
-export default run;
+import { safe } from '../../system/safe.js';
+export default safe(run, 'statistics');

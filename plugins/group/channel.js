@@ -53,7 +53,7 @@ const handler = async (m, { conn, text }) => {
         buttons_limits: 1,
         list_title: name,
         button_title: "Options",
-        canonical_url: "https://vxv-profile.vercel.app"
+        canonical_url: "https://whatsapp.com/channel/0029VbDnEPG1iUxfnegKky46"
       }
     }, global.reply_status)
 
@@ -63,4 +63,5 @@ const handler = async (m, { conn, text }) => {
 }
 
 handler.command = ['قناة']
-export default handler
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'channel');

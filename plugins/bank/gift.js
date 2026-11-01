@@ -71,7 +71,7 @@ const handler = async (m, { conn, command }) => {
             isForwarded: true,
             forwardingScore: 1,
             forwardedNewsletterMessageInfo: {
-                newsletterJid: '120363225356834044@newsletter',
+                newsletterJid: '120363428637387322@newsletter',
                 newsletterName: '𝙉𝙀𝙓𝘼 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️',
                 serverMessageId: 0
             }
@@ -83,4 +83,5 @@ handler.usage = ["يومي", "اسبوعي", "شهري"];
 handler.category = "bank";
 handler.command = ["يومي", "اسبوعي", "شهري"];
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'gift');

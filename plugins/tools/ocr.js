@@ -23,4 +23,5 @@ handler.usage = ["نسخ"];
 handler.command = ["نسخ", "ocr"];
 handler.category = "tools";
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'ocr');

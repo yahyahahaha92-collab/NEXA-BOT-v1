@@ -26,4 +26,5 @@ handler.group = true;
 handler.admin = true;
 handler.botAdmin = true;
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'link');

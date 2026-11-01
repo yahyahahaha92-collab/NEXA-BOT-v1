@@ -18,4 +18,5 @@ const toGif = async (m, { conn }) => {
 toGif.usage = ["لجيف"];
 toGif.category = "tools";
 toGif.command = ["لجيف", "togif", "لچيف"];
-export default toGif;
+import { safe } from '../../system/safe.js';
+export default safe(toGif, 'togif');

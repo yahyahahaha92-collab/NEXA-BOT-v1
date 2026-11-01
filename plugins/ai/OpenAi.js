@@ -12,4 +12,5 @@ handler.usage = ["اوبن"];
 handler.category = "ai";
 handler.command = ["اوبن"];
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'OpenAi');

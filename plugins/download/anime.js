@@ -38,7 +38,7 @@ let handler = async (m, { conn, text, command }) => {
       mentions: [m.sender],
       newsletter: {
         name: '𝙉𝙀𝙓𝘼 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️',
-        jid: '120363225356834044@newsletter'
+        jid: '120363428637387322@newsletter'
       },
     }, m)
   }
@@ -71,7 +71,7 @@ let handler = async (m, { conn, text, command }) => {
       mentions: [m.sender],
       newsletter: {
         name: '𝙉𝙀𝙓𝘼 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️',
-        jid: '120363225356834044@newsletter'
+        jid: '120363428637387322@newsletter'
       },
     }, m)
   }
@@ -107,7 +107,7 @@ let handler = async (m, { conn, text, command }) => {
       mentions: [m.sender],
       newsletter: {
         name: '𝙉𝙀𝙓𝘼 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️',
-        jid: '120363225356834044@newsletter'
+        jid: '120363428637387322@newsletter'
       },
     }, m)
   }
@@ -128,7 +128,7 @@ let handler = async (m, { conn, text, command }) => {
   mentions: [m.sender],
   newsletter: {
       name: '𝙉𝙀𝙓𝘼 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️',
-      jid: '120363225356834044@newsletter'
+      jid: '120363428637387322@newsletter'
     },
 }, m)
   }
@@ -138,4 +138,5 @@ handler.usage = ["انمي"];
 handler.command = ["انمي", "تحميل_انمي", "جلب_حلقة", "رابط_تحميل"];
 handler.category = "downloads";
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'anime');

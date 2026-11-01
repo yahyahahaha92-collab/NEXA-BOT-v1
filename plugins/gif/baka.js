@@ -30,4 +30,5 @@ handler.usage = ["باكا @منشن"];
 handler.category = "gif";
 handler.command = ["باكا"];
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'baka');

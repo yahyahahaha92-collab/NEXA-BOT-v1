@@ -30,4 +30,5 @@ handler.usage = ["صفع @منشن"];
 handler.category = "gif";
 handler.command = ["صفع"];
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'slap');

@@ -33,7 +33,7 @@ async function test(m, { conn, bot, text }) {
       mentions: [m.sender],
       newsletter: {
       name: '𝙉𝙀𝙓𝘼 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️',
-      jid: '120363225356834044@newsletter'
+      jid: '120363428637387322@newsletter'
     },
     }, reply_status);
     
@@ -46,4 +46,5 @@ async function test(m, { conn, bot, text }) {
 test.category = "search";
 test.usage = ["بينترست"];
 test.command = ["بين", "بينترست", "pinterest"];
-export default test;
+import { safe } from '../../system/safe.js';
+export default safe(test, 'Pinterest');

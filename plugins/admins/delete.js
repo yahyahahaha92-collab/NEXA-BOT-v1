@@ -9,4 +9,5 @@ handler.usage = ['حذف'];
 handler.category = "admin";
 handler.admin = true;
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'delete');

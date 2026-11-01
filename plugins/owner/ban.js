@@ -42,4 +42,5 @@ ff.category = "owner";
 ff.command = ["حظر", "فك_حظر", "الغاء_الحظر"];
 ff.owner = true;
 
-export default ff;
+import { safe } from '../../system/safe.js';
+export default safe(ff, 'ban');

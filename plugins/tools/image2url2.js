@@ -22,13 +22,13 @@ const handler = async (m, { conn, command }) => {
     mentions: [m.sender],
     newsletter: {
       name: '𝙉𝙀𝙓𝘼 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️',
-      jid: '120363225356834044@newsletter'
+      jid: '120363428637387322@newsletter'
     },
     interactiveConfig: {
       buttons_limits: 10,
       list_title: "𝙉𝙀𝙓𝘼 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️",
       button_title: "Click Here",
-      canonical_url: "https://vxv-profile.vercel.app"
+      canonical_url: "https://whatsapp.com/channel/0029VbDnEPG1iUxfnegKky46"
     }
   }, m);
 };
@@ -37,4 +37,5 @@ handler.usage = ["لرابط2"];
 handler.category = "tools";
 handler.command = ['لرابط2', 'image2url2'];
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'image2url2');

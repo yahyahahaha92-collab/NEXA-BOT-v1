@@ -2,35 +2,45 @@ import crypto from 'crypto';
 import cheerio from 'cheerio';
 import axios from 'axios';
 import qs from 'qs';
+import { extractUrl, retry } from '../../system/dl.js';
 
 const ff = async (m, { text, conn }) => {
-  if (!text) return m.reply("❌: حط رابط الفيديو جنب الأمر");
-  
+  const url = extractUrl(text) || extractUrl(m.quoted?.text || '');
+  if (!url) throw '❌ حط رابط تيك توك جنب الأمر\nمثال: .تيك https://www.tiktok.com/@user/video/123';
+  if (!/tiktok\.com\//i.test(url)) throw '❌ هذا مش رابط تيك توك';
+
+  await m.react('⏳');
+
+  let videoData;
   try {
-    
-    const videoData = await downloadTikTok(text);
+    videoData = await retry(() => downloadTikTok(url), 2);
+  } catch (e) {
+    console.error('[TIKTOK] request failed:', e?.message || e);
+    throw '❌ خدمة تيك توك مش بترد دلوقتي، جرب بعد شويه';
+  }
 
-    if (!videoData.videoUrl && !videoData.audioUrl) {
-      return m.reply("❌ Failed to download video");
-    }
+  if (!videoData?.videoUrl && !videoData?.audioUrl) {
+    throw '❌ ما قدرت أحمّل الفيديو.\nقد يكون الفيديو خاص أو محذوف أو الرابط غير صالح';
+  }
 
+  try {
     if (videoData.videoUrl) {
-      await conn.sendMessage(m.chat, { video: { url: videoData.videoUrl }, caption: `🟢 ${videoData.description || "no description"}` });
+      await conn.sendMessage(m.chat, { video: { url: videoData.hdVideo || videoData.videoUrl }, caption: `🟢 ${videoData.description || "TikTok"}` }, { quoted: m });
     }
-    
     if (videoData.audioUrl) {
-      await conn.sendMessage(m.chat, { audio: { url: videoData.audioUrl }, mimetype: 'audio/mpeg' });
+      await conn.sendMessage(m.chat, { audio: { url: videoData.audioUrl }, mimetype: 'audio/mpeg' }, { quoted: m });
     }
-    
-  } catch (error) {
-    console.error(error.message);
-    m.reply(error.message);
+    await m.react('✅');
+  } catch (e) {
+    console.error('[TIKTOK] send failed:', e?.stack || e);
+    throw '❌ تعذر إرسال الملف، جرب مرة ثانية';
   }
 };
 ff.usage = ["تيك"]
 ff.category = "downloads";
 ff.command = ["تيك", "tiktok", "tt"];
-export default ff;
+import { safe } from '../../system/safe.js';
+export default safe(ff, 'tiktok');
 
 
 async function downloadTikTok(url) {

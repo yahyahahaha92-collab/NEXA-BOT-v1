@@ -39,4 +39,5 @@ handler.usage =  ["زواج"];
 handler.category = "group";
 handler.command = ["زواج"];
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'marriage');

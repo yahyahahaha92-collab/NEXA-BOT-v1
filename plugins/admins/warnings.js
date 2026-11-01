@@ -21,4 +21,5 @@ handler.command = ["انذاراتي", "warns", "warnings", "الانذارات"
 handler.usage = ['الانذارات'];
 handler.category = "admin";
 
-export default handler;
+import { safe } from '../../system/safe.js';
+export default safe(handler, 'warnings');

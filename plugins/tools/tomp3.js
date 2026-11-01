@@ -33,4 +33,5 @@ const toAudio = async (m, { conn }) => {
 toAudio.usage = ["لصوت"];
 toAudio.category = "tools";
 toAudio.command = ["لصوت", "tomp3"];
-export default toAudio;
+import { safe } from '../../system/safe.js';
+export default safe(toAudio, 'tomp3');

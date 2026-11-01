@@ -40,7 +40,7 @@ return await conn.sendButtonNormal(m.chat, {
   mentions: [m.sender],
   newsletter: {
       name: '𝙉𝙀𝙓𝘼 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️',
-      jid: '120363225356834044@newsletter'
+      jid: '120363428637387322@newsletter'
     },
 }, m)
 
@@ -48,4 +48,5 @@ return await conn.sendButtonNormal(m.chat, {
 example.usage = ["تست5"]
 example.category = "example";
 example.command = ["تست5"]
-export default example;
+import { safe } from '../../system/safe.js';
+export default safe(example, 'example5');
