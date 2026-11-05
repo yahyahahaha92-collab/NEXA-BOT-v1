@@ -8,11 +8,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          unzip -q NEXA-github.zip
+          unzip -q Ayato-bot.zip
           cp -a Pomni-AI-main/. .
-          rm -rf Pomni-AI-main NEXA-github.zip .env
+          rm -rf Pomni-AI-main Ayato-bot.zip .env
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add -A
-          git commit -m "Add NEXA bot files"
+          git commit -m "Add Ayato bot files"
           git push
