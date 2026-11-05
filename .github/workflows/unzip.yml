@@ -8,9 +8,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          unzip -q Ayato-bot.zip
+          unzip -q Ayato-BOT.zip
           cp -a Pomni-AI-main/. .
-          rm -rf Pomni-AI-main Ayato-bot.zip .env
+          rm -rf Ayato-BOT Ayato-BOT.zip .env
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add -A
