@@ -9,43 +9,57 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Show files
+      - name: Extract zip
+        shell: python
         run: |
-          ls -la
-          file ./*.zip || true
-
-      - name: Extract with Python
-        run: |
-          python3 - <<'EOF'
           import glob, zipfile, os, shutil, sys
-          zips = glob.glob('*.zip')
+
+          print("Repo files:", os.listdir('.'))
+          zips = sorted(glob.glob('*.zip') + glob.glob('*.ZIP'))
           if not zips:
-              sys.exit("NO ZIP FOUND in repo root")
+              sys.exit("ERROR: no .zip file in the repo root")
           z = zips[0]
-          print("Using:", z, os.path.getsize(z), "bytes")
+          size = os.path.getsize(z)
+          print("Using:", z, size, "bytes")
+          if size < 1000:
+              sys.exit("ERROR: zip is too small, upload failed. Re-upload it")
           if not zipfile.is_zipfile(z):
-              sys.exit("NOT A VALID ZIP (corrupt upload) - re-upload it")
+              sys.exit("ERROR: not a valid zip file, re-upload it")
+
           shutil.rmtree('/tmp/x', ignore_errors=True)
           with zipfile.ZipFile(z) as f:
               f.extractall('/tmp/x')
+
           src = None
           for dp, dn, fn in os.walk('/tmp/x'):
-              if 'config.js' in fn:
+              if 'config.js' in fn and 'plugins' in dn:
                   src = dp
                   break
           if not src:
-              sys.exit("config.js not found in zip")
-          print("Source:", src)
+              sys.exit("ERROR: bot folder (config.js + plugins) not found in the zip")
+          print("Bot folder:", src)
+
           for name in os.listdir('.'):
-              if name not in ('.git', '.github'):
-                  p = os.path.join('.', name)
-                  shutil.rmtree(p) if os.path.isdir(p) else os.remove(p)
+              if name in ('.git', '.github'):
+                  continue
+              p = os.path.join('.', name)
+              shutil.rmtree(p) if os.path.isdir(p) else os.remove(p)
+
           for name in os.listdir(src):
               s = os.path.join(src, name)
               d = os.path.join('.', name)
-              shutil.copytree(s, d) if os.path.isdir(s) else shutil.copy2(s, d)
-          EOF
+              if os.path.isdir(s):
+                  shutil.copytree(s, d)
+              else:
+                  shutil.copy2(s, d)
+
+          for junk in ('.env',):
+              if os.path.exists(junk):
+                  os.remove(junk)
+          print("Final files:", sorted(os.listdir('.')))
 
       - name: Commit and push
         run: |
@@ -53,8 +67,8 @@ jobs:
           git config user.email "actions@github.com"
           git add -A
           if git diff --cached --quiet; then
-            echo "No changes"
+            echo "No changes to commit"
           else
             git commit -m "Add Ayato BOT files"
-            git push
+            git push origin HEAD:${{ github.ref_name }}
           fi
