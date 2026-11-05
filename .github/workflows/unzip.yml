@@ -10,40 +10,50 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Unzip and replace files
+      - name: Show files
         run: |
-          set -e
+          ls -la
+          file ./*.zip || true
 
-          ZIP=$(ls ./*.zip 2>/dev/null | head -n 1)
-          if [ -z "$ZIP" ]; then
-            echo "No zip file found in repo root"
-            exit 1
-          fi
-          echo "Found: $ZIP"
+      - name: Extract with Python
+        run: |
+          python3 - <<'EOF'
+          import glob, zipfile, os, shutil, sys
+          zips = glob.glob('*.zip')
+          if not zips:
+              sys.exit("NO ZIP FOUND in repo root")
+          z = zips[0]
+          print("Using:", z, os.path.getsize(z), "bytes")
+          if not zipfile.is_zipfile(z):
+              sys.exit("NOT A VALID ZIP (corrupt upload) - re-upload it")
+          shutil.rmtree('/tmp/x', ignore_errors=True)
+          with zipfile.ZipFile(z) as f:
+              f.extractall('/tmp/x')
+          src = None
+          for dp, dn, fn in os.walk('/tmp/x'):
+              if 'config.js' in fn:
+                  src = dp
+                  break
+          if not src:
+              sys.exit("config.js not found in zip")
+          print("Source:", src)
+          for name in os.listdir('.'):
+              if name not in ('.git', '.github'):
+                  p = os.path.join('.', name)
+                  shutil.rmtree(p) if os.path.isdir(p) else os.remove(p)
+          for name in os.listdir(src):
+              s = os.path.join(src, name)
+              d = os.path.join('.', name)
+              shutil.copytree(s, d) if os.path.isdir(s) else shutil.copy2(s, d)
+          EOF
 
-          mkdir -p /tmp/extract
-          unzip -q "$ZIP" -d /tmp/extract
-
-          CONFIG=$(find /tmp/extract -maxdepth 3 -name config.js | head -n 1)
-          if [ -z "$CONFIG" ]; then
-            echo "config.js not found inside the zip"
-            exit 1
-          fi
-          SRC=$(dirname "$CONFIG")
-          echo "Source folder: $SRC"
-
-          # مسح الملفات القديمة (كيبقى .git و .github)
-          find . -mindepth 1 -maxdepth 1 ! -name '.git' ! -name '.github' -exec rm -rf {} +
-
-          cp -a "$SRC"/. .
-          rm -f .env
-
+      - name: Commit and push
+        run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add -A
-
           if git diff --cached --quiet; then
-            echo "No changes to commit"
+            echo "No changes"
           else
             git commit -m "Add Ayato BOT files"
             git push
